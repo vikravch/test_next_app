@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { revalidatePath } from 'next/cache';
 
-export async function addTodo(formData: FormData) {
+async function addTodo(formData: FormData) {
     'use server';
     await fetch('https://mate.academy/students-api/todos', {
         method: 'POST',
