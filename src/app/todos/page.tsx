@@ -1,10 +1,9 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { revalidatePath } from 'next/cache';
 
-export async function addTodo(formData: any) {
+export async function addTodo(formData: FormData) {
     'use server';
-    const response = await fetch('https://mate.academy/students-api/todos', {
+    await fetch('https://mate.academy/students-api/todos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +31,7 @@ export default async function TodosPage() {
                 <button type="submit">Add</button>
             </form>
             {
-                todos.map((todo: any) => (<div>
+                todos.map((todo: {title:string}, index:number) => (<div key={index}>
                         <span>{todo.title}</span>
                     </div>))
             }
